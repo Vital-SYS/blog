@@ -1,20 +1,21 @@
 <?php
 
-use App\Http\Controllers\Admin\Category as Category;
-use App\Http\Controllers\Admin\Tag as Tag;
-use App\Http\Controllers\Admin\Post as Post;
-use App\Http\Controllers\Admin\User as User;
-use App\Http\Controllers\Person as Person;
-
-
-use App\Http\Controllers\Admin\Main\AdminController;
-use App\Http\Controllers\Main\IndexController;
-use App\Http\Controllers\Person\Comment\DeleteController;
-use App\Http\Controllers\Person\Comment\EditController;
-use App\Http\Controllers\Person\Comment\UpdateController;
-use App\Http\Controllers\Post\Comment\StoreController;
-use App\Http\Controllers\Post\ShowController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\Tag as Tag;
+use App\Http\Controllers\Person as Person;
+use App\Http\Controllers\Admin\Post as Post;
+
+
+use App\Http\Controllers\Admin\User as User;
+use App\Http\Controllers\Post\ShowController;
+use App\Http\Controllers\Main\IndexController;
+use App\Http\Controllers\Admin\Category as Category;
+use App\Http\Controllers\Admin\Main\AdminController;
+use App\Http\Controllers\Post\Comment\StoreController;
+use App\Http\Controllers\Person\Comment\EditController;
+use App\Http\Controllers\Person\Comment\DeleteController;
+use App\Http\Controllers\Person\Comment\UpdateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,10 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::group(['namespace' => 'Main', 'prefix' => 'main'], function () {
     Route::get('/', [IndexController::class, '__invoke'])->name('main.index');
